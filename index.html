@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Telkar - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d1b2a;
+            --secondary-color: #415a77;
+            --accent-color: #e0ac2b;
+            --light-bg: #e0e1dd;
+            --dark-bg: #0d1b2a;
+            --text-color-light: #0d1b2a;
+            --text-color-dark: #e0e1dd;
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #1b263b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--text-color-dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+            color: var(--accent-color);
+        }
+
+        .navbar {
+            background-color: var(--card-bg-light);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .navbar {
+            background-color: var(--dark-bg) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .dark-mode .navbar-brand {
+            color: var(--accent-color) !important;
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .nav-link {
+            color: var(--text-color-dark) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .active-link {
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .hero {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 56px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-light {
+            background-color: var(--light-bg);
+        }
+
+        .section-dark {
+            background-color: var(--secondary-color);
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .section-light {
+            background-color: var(--dark-bg);
+        }
+        
+        .dark-mode .section-dark {
+            background-color: var(--card-bg-dark);
+            color: var(--text-color-dark);
+        }
+        
+        .dark-mode .section-dark h2 {
+            color: var(--text-color-dark);
+        }
+
+        .card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+            background-color: var(--card-bg-light);
+            color: var(--text-color-light);
+        }
+
+        .dark-mode .card {
+            background-color: var(--card-bg-dark);
+            color: var(--text-color-dark);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .card-body, .card-title, .card-text {
+            color: inherit; /* Ensure card content inherits the card's text color */
+        }
+        
+        .dark-mode .card-body p,
+        .dark-mode .card-body ul,
+        .dark-mode .card-body li,
+        .dark-mode .card-body strong {
+            color: var(--text-color-dark);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            color: var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background-color: #c49926;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-light {
+            color: var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-light:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .dark-mode .btn-outline-primary {
+            border-color: var(--text-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .dark-mode .btn-outline-primary:hover {
+            background-color: var(--text-color-dark);
+            color: var(--dark-bg);
+        }
+
+        .form-control {
+            border-radius: 10px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .dark-mode .form-control {
+            background-color: #333;
+            border-color: #555;
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .form-label {
+            color: var(--text-color-dark);
+        }
+        
+        .social-links a {
+            font-size: 2rem;
+            margin: 0 10px;
+            color: var(--accent-color);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .dark-mode .social-links a {
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .dark-mode p, .dark-mode li, .dark-mode a {
+            color: var(--text-color-dark);
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+
+        .avatar {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .modal-content {
+            background-color: var(--card-bg-light);
+            color: var(--text-color-light);
+        }
+
+        .dark-mode .modal-content {
+            background-color: var(--card-bg-dark);
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .modal-title {
+            color: var(--text-color-dark);
+        }
+
+        .dark-mode .modal-header .btn-close {
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+
+    <nav id="main-nav" class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" data-aos="fade-right">Harsh Telkar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" data-aos="fade-left">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certifications">Certifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resume">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="item">
+                        <a class="nav-link" href="mailto:telkarharsh@gmail.com">Mail</a>
+                    </li>
+                     <li class="item">
+                        <a class="nav-link" href="callto:9307433721">Call</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <div class="form-check form-switch mt-2">
+                            <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                            <label class="form-check-label" for="darkModeToggle"><i class="bi bi-moon-fill"></i></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="home" class="hero">
+        <div class="container" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="display-3 fw-bold">Hello, I'm <span style="background: linear-gradient(45deg, var(--accent-color), #c49926); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Harsh Telkar</span></h1>
+            <p class="lead mt-3">An aspiring <span class="fw-bold">Software Developer</span>, <span class="fw-bold">AI/ML Engineer</span>, and <span class="fw-bold">Full Stack Developer</span>.</p>
+            <a href="#contact" class="btn btn-lg btn-light mt-4 fw-bold">Get In Touch</a>
+            
+        </div>
+    </div>
+
+    <div id="about" class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center mb-4 mb-lg-0" data-aos="fade-right">
+                    <img src="assets/IMG_7601.jpeg" class="avatar" alt="Harsh Telkar Profile Photo">
+                </div>
+                <div class="col-lg-8" data-aos="fade-left">
+                    <p class="lead">
+                        Hello, I'm Harsh Ajay Telkar. I've recently completed my PG Diploma in AI & ML from MIT-WPU and hold a BCA from Kaveri College. My passion lies in creating intelligent systems and solving complex problems using technology.
+                    </p>
+                    <p>
+                        I have a strong foundation in programming languages like Python, Java, and C/C++, Frontend, Backend and I'm proficient in tools and technologies such as TensorFlow, NLP, and SQL. My goal is to secure a role in software development, AI/ML engineering, or Full Stack Developer where I can apply my skills and contribute to a forward-thinking team.
+                    </p>
+                    <div class="d-flex justify-content-start social-links mt-4" data-aos="fade-up" data-aos-delay="200">
+                        <a href="http://linkedin.com/in/harsh-telkar-baa036283" target="_blank" data-bs-toggle="tooltip" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="mailto:telkarharsh@gmail.com" data-bs-toggle="tooltip" title="Email"><i class="bi bi-envelope-fill"></i></a>
+                        <a href="tel:9307433721" data-bs-toggle="tooltip" title="Call"><i class="bi bi-telephone-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="experience" class="section section-dark">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Experience</h2>
+            <div class="card p-4 mx-auto" data-aos="zoom-in">
+                <h4 class="card-title text-center text-primary"><i class="bi bi-briefcase-fill me-2"></i> Software Engineer Intern</h4>
+                <p class="text-center"><strong>Rego Digital Solutions Pvt. Ltd.</strong> | September 2, 2024 - july 30, 2025</p>
+                <hr>
+                <ul>
+                    <li>Assisted in the development and maintenance of web applications using HTML, CSS, JavaScript, and PHP.</li>
+                    <li>Collaborated with the team to debug code and implement new features.</li>
+                    <li>Gained hands-on experience with database management using MySQL.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <h4 class="card-title text-center text-primary"><i class="bi bi-code-slash me-2"></i> Technical Skills</h4>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li><strong>Programming:</strong> Python, Java, C/C++, SQL, R, HTML, CSS, JavaScript, PHP</li>
+                            <li><strong>AI/ML:</strong> TensorFlow, NLP, Deep Learning, Image Processing</li>
+                            <li><strong>Databases:</strong> MySQL, IDBM</li>
+                            <li><strong>Data Analysis:</strong> Power BI, Tableau, Excel</li>
+                            <li><strong>Tools & Others:</strong> Git, VS Code, Jupyter Notebook, PowerPoint</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 p-4">
+                        <h4 class="card-title text-center text-primary"><i class="bi bi-person-fill-gear me-2"></i> Soft Skills</h4>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li>Problem-solving</li>
+                            <li>Time Management</li>
+                            <li>Team Collaboration</li>
+                            <li>Leadership</li>
+                            <li>Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 p-4">
+                        <h4 class="card-title text-center text-primary"><i class="bi bi-globe me-2"></i> Languages</h4>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li>English</li>
+                            <li>Hindi</li>
+                            <li>Marathi</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 p-4">
+                        <h4 class="card-title text-center text-primary"><i class="bi bi-joystick me-2"></i> Hobbies</h4>
+                        <hr>
+                        <ul class="list-unstyled">
+                            <li>Cybersecurity</li>
+                            <li>Basketball</li>
+                            <li>Hiking</li>
+                            <li>Photography</li>
+                            <li>Travelling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="section section-dark">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="card h-100">
+                        <img src="assets/ai voice.png" class="card-img-top" alt="AI Voice Assistant Project">
+                        <div class="card-body">
+                            <h5 class="card-title">AI Voice Assistant (Nova)</h5>
+                            <p class="card-text">A Python-based desktop voice assistant similar to Siri & Alexa, utilizing natural language processing.</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaProjectModal">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <img src="assets/Doctor.png" class="card-img-top" alt="Doctor Appointment System Project">
+                        <div class="card-body">
+                            <h5 class="card-title">Doctor Appointment System</h5>
+                            <p class="card-text">A full-stack web application for hospital appointment scheduling, built using PHP, MySQL, HTML, CSS, and JavaScript.</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorProjectModal">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <img src="assets/PUJAKART.png" class="card-img-top" alt="PUJAKART Project">
+                        <div class="card-body">
+                            <h5 class="card-title">PUJAKART - E-commerce Website</h5>
+                            <p class="card-text">A full-featured e-commerce platform for puja items, developed using HTML, CSS, JavaScript, PHP, and SQL.</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pujakartProjectModal">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="certifications" class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Certifications</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-3">
+                        <img src="assets/Basic of Python certificate _page-0001.jpg" class="card-img-top" alt="Programming Languages Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Programming Languages</h5>
+                            <p class="card-text">Python (IIT Bombay), Java, C/C++, SQL</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#certModal1">View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 text-center p-3">
+                        <img src="assets/Certificate AI_page-0001.jpg" class="card-img-top" alt="AI/ML Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">AI/ML & Deep Learning</h5>
+                            <p class="card-text">TensorFlow, Generative AI (MIT-WPU & IET), NLP, Machine Learning</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#certModal2">View</button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 text-center p-3">
+                        <img src="assets/power bi.png" class="card-img-top" alt="Data Analysis Tools Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Analysis Tools</h5>
+                            <p class="card-text">Power BI for Beginners, Advanced Excel, Tableau</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#certModal3">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="resume" class="section section-dark text-center">
+        <div class="container" data-aos="fade-up">
+            <h2 class="mb-4 fw-bold">Resume</h2>
+            <p class="lead">A complete overview of my professional experience, education, and skills.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                    <i class="bi bi-eye-fill me-2"></i>View Resume
+                </button>
+                <a href="https://drive.google.com/file/d/1lNUuTHbaqqjdAosDec-emwF3oTdcmSav/view?usp=drive_link" class="btn btn-outline-primary btn-lg" download="Harsh_Telkar_Resume.pdf">
+                    <i class="bi bi-download me-2"></i>Download PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="section section-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Contact Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <p class="text-center lead">I'm always open to new opportunities. Feel free to get in touch!</p>
+                    <form action="https://formsubmit.co/telkarharsh@gmail.com" method="POST">
+                        <div class="mb-3" data-aos="fade-right">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3" data-aos="fade-left">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3" data-aos="fade-right" data-aos-delay="100">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                        <button type="submit" class="btn btn-primary w-100" data-aos="fade-up">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center py-4" data-aos="fade-up">
+        <div class="container">
+            <p>&copy; 2025 Harsh Telkar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="novaProjectModal" tabindex="-1" aria-labelledby="novaProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novaProjectModalLabel">AI Voice Assistant (Nova)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/ai voice.png" class="img-fluid mb-3" alt="Project Nova Preview">
+                    <p><strong>Description:</strong> Developed a desktop voice assistant using Python, integrating libraries like SpeechRecognition, Pyttsx3, and OpenAI GPT API. It enables users to perform various tasks via voice commands, such as web searches, weather reports, and system operations, enhancing human-computer interaction.</p>
+                    <p><strong>Technologies Used:</strong> Python, SpeechRecognition, Pyttsx3, OpenAI API</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="doctorProjectModal" tabindex="-1" aria-labelledby="doctorProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="doctorProjectModalLabel">Doctor Appointment System</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/Doctor.png" class="img-fluid mb-3" alt="Doctor Appointment System Preview">
+                    <p><strong>Description:</strong> A full-stack web application created with PHP, HTML, CSS, JavaScript, and SQL for hospital appointment scheduling. The system includes patient-doctor interaction workflows and admin modules, improving appointment booking efficiency by 60%.</p>
+                    <p><strong>Technologies Used:</strong> PHP, HTML, CSS, JavaScript, SQL, MySQL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="pujakartProjectModal" tabindex="-1" aria-labelledby="pujakartProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pujakartProjectModalLabel">PUJAKART - E-commerce Website</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/PUJAKART.png" class="img-fluid mb-3" alt="PUJAKART Project Preview">
+                    <p><strong>Description:</strong> A robust e-commerce platform designed for selling puja items. The website is built as a full-stack solution, featuring user authentication, a product catalog, a shopping cart, and a secure checkout process. It utilizes server-side scripting to handle dynamic content and database operations.</p>
+                    <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, PHP, SQL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="certModal1" tabindex="-1" aria-labelledby="certModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="certModal1Label">Programming Languages Certifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="assets/Core Java & Python certificate _page-0001.jpg" class="img-fluid mb-3" alt="Core Java & Python Certificate">
+                    <img src="assets/Basic of Python certificate _page-0001.jpg" class="img-fluid" alt="Basics of Python Certificate">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="certModal2" tabindex="-1" aria-labelledby="certModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="certModal2Label">AI/ML Certifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="assets/Certificate AI_page-0001.jpg" class="img-fluid mb-3" alt="AI Certificate">
+                    <img src="Assets/Machine learning using Python certificate_page-0001.jpg" class="img-fluid mb-3" alt="Machine Learning Certificate">
+                    <img src="Assets/Types of artificial intelligence certificate_page-0001.jpg" class="img-fluid" alt="AI Types Certificate">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="certModal3" tabindex="-1" aria-labelledby="certModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="certModal3Label">Data Analysis Tool Certifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="lead"><img src="assets/power bi.png" class="img-fluid mb-3" alt="AI Certificate"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resumeModalLabel">Harsh Telkar - Resume</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="Assets/CV__HARSHTELKAR.pdf" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section, .hero');
+
+            const removeActiveClass = () => {
+                navLinks.forEach(link => link.classList.remove('active-link'));
+            };
+
+            const onScroll = () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                removeActiveClass();
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active-link');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            darkModeToggle.addEventListener('change', () => {
+                body.classList.toggle('dark-mode');
+            });
+            
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        });
+    </script>
+</body>
+</html>
